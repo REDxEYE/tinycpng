@@ -59,12 +59,12 @@ add_library(tinycpng_utils STATIC
 
 target_compile_definitions(tinycpng PRIVATE TINYCPNG_EXPORTS=1)
 #target_compile_options(tinycpng PUBLIC -fms-extensions)
-target_include_directories(tinycpng PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/public)
-target_include_directories(tinycpng PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/private)
-target_include_directories(tinycpng-static PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/public)
-target_include_directories(tinycpng-static PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/private)
-target_include_directories(tinycpng_utils PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/public)
-target_include_directories(tinycpng_utils PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/private)
+target_include_directories(tinycpng PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/tinycpng/public)
+target_include_directories(tinycpng PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/tinycpng/private)
+target_include_directories(tinycpng-static PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/tinycpng/public)
+target_include_directories(tinycpng-static PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/tinycpng/private)
+target_include_directories(tinycpng_utils PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/tinycpng/public)
+target_include_directories(tinycpng_utils PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/tinycpng/private)
 target_link_libraries(tinycpng PRIVATE zlib-ng-static)
 target_link_libraries(tinycpng PUBLIC  tinycpng_utils)
 
@@ -86,4 +86,4 @@ add_executable(tests
         src/tests/encoding_decoding_tests.c
 )
 target_link_libraries(tests PUBLIC tinycpng tinycpng_utils)
-target_include_directories(tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/private)
+target_include_directories(tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/tinycpng/private)
