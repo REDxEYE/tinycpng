@@ -11,6 +11,9 @@ set(WITH_FUZZERS OFF CACHE BOOL "Disable building examples for zlib-ng")
 set(WITH_BENCHMARKS OFF CACHE BOOL "Disable building benchmarks for zlib-ng")
 set(WITH_BENCHMARK_APPS OFF CACHE BOOL "Disable building benchmarks-apps for zlib-ng")
 set(ZLIB_COMPAT OFF CACHE BOOL "Disable zlib-ng zlib compatibility layer")
+set(ZLIBNG_ENABLE_TESTS OFF CACHE BOOL "" FORCE)
+set(ZLIBNG_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
+set(ZLIBNG_ENABLE_PACKAGE_CONFIG OFF CACHE BOOL "" FORCE)
 set(ZLIB_ENABLE_OPTIMIZATIONS ON CACHE BOOL "Enable zlib-ng optimizations")
 
 FetchContent_Declare(
