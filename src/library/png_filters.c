@@ -86,7 +86,7 @@ Error unfilter_row(const PNG_InternalState *state, const u8 *row_data, const u32
         return error_fatal_fmt("Invalid PNG filter type %u", filter_type);
     }
 
-    u32 pixel_size = max(1, state->ihdr.bit_depth / 8 * state_channels(state));
+    u32 pixel_size = PNG_MAX(1, state->ihdr.bit_depth / 8 * state_channels(state));
 
     unfilters[filter_type](row_data + 1, previous_row, output_row, row_length - 1, pixel_size);
     return NO_ERROR;

@@ -8,6 +8,8 @@
 #include "library.h"
 #include "png_chunks.h"
 
+#define PNG_MAX(a,b) (((a) > (b)) ? (a) : (b))
+#define PNG_MIN(a,b) (((a) < (b)) ? (a) : (b))
 #define PNG_FOURCC(a, b, c, d) ((u32)(a) | (u32)(b) << 8 | (u32)(c) << 16 | (u32)(d)<< 24)
 
 typedef struct {

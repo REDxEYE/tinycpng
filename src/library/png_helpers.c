@@ -4,6 +4,7 @@
 #include "file_utils.h"
 #include "png_crc.h"
 
+
 size_t state_bytes_per_row(const PNG_InternalState *state) {
     size_t channel_count = 0;
     switch (state->ihdr.color_type) {
@@ -51,7 +52,7 @@ u32 state_pixel_size(const PNG_InternalState *state) {
             channel_count = 0; // Unknown color type
             break;
     }
-    return max(1, state->ihdr.bit_depth * channel_count / 8);
+    return PNG_MAX(1, state->ihdr.bit_depth * channel_count / 8);
 }
 
 u32 state_channels(const PNG_InternalState *png) {
