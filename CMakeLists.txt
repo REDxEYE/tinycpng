@@ -17,6 +17,7 @@ FetchContent_Declare(
         zlib-ng
         GIT_REPOSITORY https://github.com/zlib-ng/zlib-ng.git
         GIT_TAG 2.3.2
+        EXCLUDE_FROM_ALL
 )
 
 FetchContent_MakeAvailable(zlib-ng)
