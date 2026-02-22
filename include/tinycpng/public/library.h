@@ -127,9 +127,6 @@ typedef struct {
 #define PNG_BEST_COMPRESSION       9
 #define PNG_DEFAULT_COMPRESSION  (-1)
 
-PNG_API void PNGWriteConfig_default(PNGWriteConfig *config);
-
-
 typedef struct {
     u32 width;
     u32 height;
@@ -163,6 +160,11 @@ typedef struct {
     PNGICCProfileChunk icc_profile;
 } PNGFile;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+PNG_API void PNGWriteConfig_default(PNGWriteConfig *config);
 
 PNG_API Error png_read(UserIO *user_io, PNGFile *png);
 
@@ -176,3 +178,7 @@ PNG_API Error png_apply_palette(PNGFile *png);
 PNG_API u32 png_channels(const PNGFile *png);
 
 PNG_API void png_free(PNGFile *png);
+
+#ifdef __cplusplus
+}
+#endif

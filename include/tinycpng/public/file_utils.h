@@ -7,7 +7,10 @@
 #include "mytypes.h"
 #include "error_utils.h"
 
+#ifdef __cplusplus
+extern "C" {
 
+#endif
 typedef void *UserFile;
 typedef struct UserIO UserIO;
 
@@ -61,3 +64,7 @@ u32 memory_file_write(UserIO *io, const void *in, u32 in_size);
 u32 native_file_read(UserIO *io, void *out, u32 out_size);
 
 u32 native_file_write(UserIO *io, const void *in, u32 in_size);
+
+#ifdef __cplusplus
+}
+#endif
