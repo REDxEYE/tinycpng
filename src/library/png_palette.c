@@ -36,7 +36,36 @@ Error png_generate_palette_1c8b(PNG_InternalState *state) {
 }
 
 Error png_generate_palette_2c8b(PNG_InternalState *state) {
-    return error_warning("TODO: Palette generation for 2-channel 8-bit PNGs is not implemented yet");
+    const u32 max_colors = 256;
+    u32 color_count = 0;
+    RGBA *palette_colors = (RGBA *) malloc(sizeof(RGBA) * max_colors);
+    memset(palette_colors, 255, sizeof(RGBA) * max_colors);
+    const u32 num_pixels = state->ihdr.width * state->ihdr.height;
+    for (u64 i = 0; i < num_pixels; i++) {
+        const RG pixel = *(RG *) (state->image_data + i * 2);
+
+        bool color_found = false;
+        for (u32 color_id = 0; color_id < color_count; color_id++) {
+            if (palette_colors[color_id].r == pixel.r && palette_colors[color_id].g == pixel.g) {
+                color_found = true;
+                break;
+            }
+        }
+
+        if (!color_found) {
+            if (color_count >= max_colors) {
+                free(palette_colors);
+                return NO_ERROR;
+            }
+            palette_colors[color_count].r = pixel.r;
+            palette_colors[color_count].g = pixel.g;
+            color_count++;
+        }
+    }
+    state->palette = palette_colors;
+    state->palette_color_count = color_count;
+
+    return NO_ERROR;
 }
 
 Error png_generate_palette_3c8b(PNG_InternalState *state) {
