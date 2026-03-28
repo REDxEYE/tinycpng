@@ -60,13 +60,13 @@ add_library(tinycpng_utils STATIC
 target_compile_definitions(tinycpng PRIVATE TINYCPNG_EXPORTS=1)
 #target_compile_options(tinycpng PUBLIC -fms-extensions)
 target_include_directories(tinycpng PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/tinycpng/public>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
 target_include_directories(tinycpng PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/tinycpng/private)
 
 target_include_directories(tinycpng-static PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/tinycpng/public>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
 target_include_directories(tinycpng-static PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/tinycpng/private)
